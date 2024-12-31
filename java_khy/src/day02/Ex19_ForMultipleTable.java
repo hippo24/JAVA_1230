@@ -15,7 +15,7 @@ public class Ex19_ForMultipleTable {
 		
 			int num = 2;
 		for(int i = 1; i<=9; i++) {
-			System.out.println(num + " x " + i +  " = " + num*i);
+			System.out.println(num + " x " + i +  " = " + num*i); 
 		}
 
 	}
