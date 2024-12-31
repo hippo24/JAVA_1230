@@ -20,14 +20,30 @@ public class Ex11_IfOperator {
 		num2 = scan.nextInt();
 		
 		/* 연산자가 + 이면 두 수의 더한 값을 출력하고
+		 * operator가 +와 같다면 num1 + num2를 출력
 		 * 연산자가 - 이면 두 수의 뺀 값을 출력하고
 		 * 연산자가 * 이면 두 수의 곱을 출력하고
 		 * 연산자가 / 이면 두 수의 나눈 값을 출력하고
 		 * 연산자가 % 이면 두 수의 나머지를 출력하고
 		 * 산술연산자가 아니면 잘못된 산술 연산자입니다 라고 출력
 		 */
-		
-		System.out.println("" + num1  + operator + num2);
-	}
+		if(operator == '+') {
+			System.out.println(num1 + " "+ operator + " " + num2 + " = " + (num1 + num2));
+		}
+		else if(operator == '-') {
+			System.out.println(num1 + " "+ operator + " " + num2 + " = " + (num1 - num2));
+		}
+		else if(operator == '*') {
+			System.out.println(num1 + " "+ operator + " " + num2 + " = " + (num1 * num2));
+		}
+		else if(operator == '/') {
+			System.out.println(num1 + " "+ operator + " " + num2 + " = " + ((double)num1 / num2));
+		}
+		else if(operator == '%') {
+			System.out.println(num1 + " "+ operator + " " + num2 + " = " + (num1 % num2));
+		}
+		else {
+			System.out.println(operator + "는 잘못된 산술 연산자입니다.");
+		}
 
-}
+	}}
