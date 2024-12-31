@@ -9,7 +9,7 @@ public class Ex03_OperatorConditional {
 		
 		int num = 4;
 		boolean isEven = isEven = num % 2 == 0;
-		System.out.println(num + "는 짝수? " + isEven);
+		System.out.println(num + "는 짝수? " + isEven); 
 		
 		String result = (num % 2 == 0) ? "짝수" : "홀수";
 		System.out.println(num + "는 " + result);
