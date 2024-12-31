@@ -17,7 +17,7 @@ public class Ex07_IfNumber {
 			System.out.println(num + "는 음수");
 
 		}
-
+ 
 	}
 
 }

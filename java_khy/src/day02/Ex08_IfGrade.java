@@ -24,6 +24,6 @@ public class Ex08_IfGrade {
 		else {
 			System.out.println("잘못된 점수");
 	
-		}
+		} 
 	}
 }

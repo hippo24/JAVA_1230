@@ -23,5 +23,5 @@ public class Ex09_IfSeason {
 		else {
 			System.out.println(month + "월은 잘못된 월");
 		}
-	}
+	} 
 }

@@ -14,4 +14,4 @@ public class Ex06_IfEvenNumber2 {
 		}
 	}
 	
-}
+} 

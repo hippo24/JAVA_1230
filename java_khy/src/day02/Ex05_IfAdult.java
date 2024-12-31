@@ -14,5 +14,5 @@ public class Ex05_IfAdult {
 			System.out.println(age + "살은 미성년자");
 		}
 	}
-
+ 
 }

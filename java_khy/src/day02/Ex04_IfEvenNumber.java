@@ -18,7 +18,7 @@ public class Ex04_IfEvenNumber {
 		 * */
 		if(num % 2 != 0) {
 			System.out.println(num + "는 홀수");
-		}
+		} 
 	}
 
 }
