@@ -13,7 +13,7 @@ public class Ex19_NestingPrimeNumber {
 		int count = 0;
 		/* 반복횟수 : num가 2부터 100까지 1씩 증가
 		 * 규칙성 : num가 소수이면 num를 출력
-		 * 반복문 종료 후 없음 :
+		 * 반복문 종료 후 : 없음
 		 */
 		for(num = 2; num <= 100; num++) {
 			count = 0;
