@@ -1,6 +1,6 @@
 package day05;
 
-public class Ex07_Initialize {
+public class Ex07_initialize {
 
 	public static void main(String[] args) {
 		Point p = new Point();
