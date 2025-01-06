@@ -107,4 +107,4 @@ public class Ex01_Day04_Homework {
 		}while(menu != '3');//조건식은 참 또는 거짓이 되는 식
 	}
 
-}
+} 
