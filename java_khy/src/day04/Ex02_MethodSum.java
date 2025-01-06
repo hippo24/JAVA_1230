@@ -18,4 +18,4 @@ public class Ex02_MethodSum {
 		int sum = num1 + num2;
 		return sum;
 	}
-}
+} 
