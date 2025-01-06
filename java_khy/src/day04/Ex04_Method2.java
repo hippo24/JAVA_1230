@@ -30,5 +30,5 @@ public class Ex04_Method2 {
 		}
 		//못 찾으면 소수
 		return true;
-  }
-}
+  } 
+} 
