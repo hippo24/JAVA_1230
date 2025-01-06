@@ -26,7 +26,7 @@ public class Ex01_Day04_Homework {
 		 * 1. UpDown 게임 실행
 		 * 2. 최고 기록 확인
 		 * 3. 프로그램 종료
-		 * 메뉴 선택 : 2
+		 * 
 		 * 2회
 		 * 메뉴로 가려면 엔터를 입력하세요.
 		 * 메뉴
@@ -38,11 +38,11 @@ public class Ex01_Day04_Homework {
 		 * */
 
 		//메뉴 변수 선언
-		char menu; //초기값을 해야 하는 경우 => for, while문에서 조선식으로 들어갈 때
+		char menu; //초기값을 해야 하는 경우는? => for문, while문에서 조건식으로 들어갈때
 		//스캐너 선언 : 콘솔에서 입력받기 위해서
 		Scanner scan = new Scanner(System.in);
 		int max = 100, min = 1;
-		int maxCount = 0; // Integer.MAX_VALUE; => int가 가질 수 있는 최대값, max - min + 1도 가능
+		int maxCount = 0;
 		//반복문 : 종료를 선택할 때까지 반복
 		do {
 			//메뉴 출력
@@ -55,7 +55,7 @@ public class Ex01_Day04_Homework {
 			//메뉴를 입력
 			menu = scan.next().charAt(0);
 			
-			//입력 받은 메뉴에 따라 실행
+			//입력 받은 메뉴에 따라 기능을 실행
 			//메뉴가 1이면 게임 실행, 2이면 기록 확인, 3이면 프로그램 종료
 			switch(menu) {
 			case '1':
@@ -63,10 +63,10 @@ public class Ex01_Day04_Homework {
 				int random = (int)(Math.random() * (max - min + 1) + min);
 				//반복 : 맞출때까지
 				int input, count = 0;
-				System.out.println(random);//테스트용
+				System.out.println(random);//테스트 용
 				do {
 					++count;
-					//입력
+					//입력 
 					System.out.print("입력 : ");
 					input = scan.nextInt();
 					//입력한 값에 따라 결과를 출력
@@ -87,14 +87,16 @@ public class Ex01_Day04_Homework {
 				}
 				break;
 			case '2':
-				//기록이 있으면 횟수를 출력하고 없으면 게임을 실행한 적이 없습니다.
+				//기록이 있으면 쵯수를 출력하고 없으면 게임을 실행한 적이 없습니다.
 				if(maxCount != 0) {
 					System.out.println("최고 기록 : " + maxCount);
 				}
 				else {
 					System.out.println("게임을 실행한 적이 없습니다.");
 				}
-				System.out.println("최고 기록을 확인했습니다.");
+				System.out.print("메뉴로 가려면 엔터를 입력하세요.");
+				scan.nextLine();//메뉴와 함께 입력한 엔터 처리용
+				scan.nextLine();//메뉴로 돌아가기 위한 엔터 처리
 				break;
 			case '3':
 				System.out.println("프로그램을 종료합니다.");
@@ -102,9 +104,9 @@ public class Ex01_Day04_Homework {
 			default:
 				System.out.println("올바른 메뉴가 아닙니다.");
 			}
-
+		
 			//종료를 선택하기 전까지 반복
-		}while(menu != '3');//조건식은 참 또는 거짓이 되는 식
+		}while(menu != '3');//조건식은 참 또는 거짓이 되는 식 
+		
 	}
-
-} 
+}
