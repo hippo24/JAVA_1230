@@ -68,4 +68,4 @@ public class StudentProgram {
 		System.out.print("메뉴 선택 : ");
 	}
 	
-}
+}           
