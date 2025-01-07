@@ -24,10 +24,11 @@ public class Ex03_ArrayCopy {
 		arr2[0] = 10;
 		print(arr3);
 		
-		//arr3를 0번지부터 2개 복사해서 arr4에 2번지부터 2개 덮어씀
+		//arr3에 0번지부터 2개 복사해서 arr4에 2번지부터 2개 덮어씀
 		int arr4[] = new int[arr3.length];
 		System.arraycopy(arr3, 0, arr4, 2, 2);
 		print(arr4);
+		
 	}
 	
 	public static void print(int []arr) {
