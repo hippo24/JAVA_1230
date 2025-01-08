@@ -139,7 +139,7 @@ public class Ex04_StudentScore1 {
 				}
 				if(index >= 0) {
 					//index 번지에 있는 학생의 성적을 입력받은 새 성적으로 수정
-					list[index].setScore(score);
+					list[index].setS/core(score);
 					System.out.println("학생 정보를 수정했습니다.");
 				}else {
 					System.out.println("과목이 없거나 학생 정보가 없습니다.");
