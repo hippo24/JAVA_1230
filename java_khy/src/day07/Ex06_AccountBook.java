@@ -125,7 +125,9 @@ public class Ex06_AccountBook {
 				break;
 			case 3:
 				//내역들을 출력
-				
+				for(int i = 0; i < count; i++) {
+					list[i].print(i+1);
+				}
 				//삭제할 내역의 숫자를 입력
 				
 				//입력받은 숫자 번지부터 앞으로 한칸씩 당김
