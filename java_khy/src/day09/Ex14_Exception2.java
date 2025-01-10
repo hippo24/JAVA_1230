@@ -2,19 +2,17 @@ package day09;
 
 import java.util.Arrays;
 
-import javax.management.RuntimeErrorException;
-
 public class Ex14_Exception2 {
 
 	public static void main(String[] args) {
-
-		int [] arr = new int [] {1,2,3,4,5};
 		
-		arr = expend(arr, 5);
+		int []arr = new int [] {1,2,3,4,5};
+		
+		arr =  expend(arr, 5);
 		System.out.println(Arrays.toString(arr));
 		
-		//예외가 발생할 수 있는 상황 : 축소하는 경우 복사하는 과정에서
-		//문제가 발생할 수 있다.
+		//예외가 발생할 수 있는 상황 : 축소하는 경우 복사하는 과정에서 문제가
+		//발생할 수 있다
 		try {
 			//arr = expend(arr, -10);
 			//예외가 발생할 수 있는 상황
@@ -25,7 +23,8 @@ public class Ex14_Exception2 {
 			System.out.println(e.getMessage());
 		}
 		
-		System.out.println("프로그램 종료");
+		System.out.println("프로그램 종료.");
+
 	}
 	
 	public static int [] expend(int [] arr, int addSize) {
