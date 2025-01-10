@@ -9,7 +9,7 @@ public class Ex09_Format {
 		DecimalFormat format = new DecimalFormat("000,000");
 		int num = 12345;
 		System.out.println(format.format(num));
-		
+
 		String message = "{1} : {0}";
 		String name = "홍길동";
 		int score = 100;
