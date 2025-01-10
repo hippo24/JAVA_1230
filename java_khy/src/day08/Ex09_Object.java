@@ -3,21 +3,18 @@ package day08;
 import java.util.Objects;
 
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 
 public class Ex09_Object {
 
 	public static void main(String[] args) throws CloneNotSupportedException {
-		
+
 		Point p = new Point();
 		
 		/* println은 매개변수가 클래스의 객체이면 객체의 toString을 호출해서 출력
 		 * => 모든 클래스는 Object 클래스를 상속 받음 => Object 클래스에서 물려받은 toString을
-		 *   가지고 있기 때문에
-		 * */
+		 * 가지고 있기 때문에 
+		 */
 		System.out.println(p);
 		System.out.println(p.toString());
 		
@@ -31,15 +28,12 @@ public class Ex09_Object {
 		Student std4 = (Student)std1.clone();
 		std1.score = 90;
 		System.out.println(std4);
-		System.out.println("   adsf    dfadf      ");
-		System.out.println("dfasdk                                  .");
 	}
-	
+
 	public void println(Object object) {
 		System.out.println(object.toString());
 	}
 }
-
 class Point{
 	private int x, y;
 
@@ -57,7 +51,6 @@ class Student implements Cloneable{
 	int grade, classNum, num;
 	String name, subject;
 	int score;
-	
 	@Override
 	public int hashCode() {
 		return Objects.hash(classNum, grade, num, subject);
