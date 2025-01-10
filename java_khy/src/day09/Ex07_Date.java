@@ -21,6 +21,7 @@ public class Ex07_Date {
 		date = format.parse(str);
 		
 		System.out.println(date);
+
 	}
 
 }
