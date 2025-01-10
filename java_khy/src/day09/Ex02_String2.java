@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Ex02_String2 {
 
-	
 	public static void main(String[] args) {
 		/* 파일명을 수정하는 기능을 구현하세요.
 		 * 기존 파일명을 입력받고(확장자를 포함)
@@ -17,8 +16,7 @@ public class Ex02_String2 {
 		 * 
 		 * lastIndexOf, substring, replace
 		 * */
-		
-		
+
 		Scanner scan = new Scanner(System.in);
 		System.out.print("입력 : ");
 		String fileName = scan.nextLine();
@@ -27,7 +25,7 @@ public class Ex02_String2 {
 		
 		//뒤에서 첫 .의 위치를 찾음
 		int index = fileName.lastIndexOf(".");
-				
+		
 		if(index < 0) {
 			System.out.println("확장자가 없는 파일명입니다.");
 			return;

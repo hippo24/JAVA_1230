@@ -8,14 +8,14 @@ public class Ex01_String {
 		
 		String fileName = "test.bmp";
 		String imgs [] = new String[] {"jpg", "bmp", "gif", "png"};
-		
-		//txt를 추출
+
+		//txt를 추출 
 		//lastIndexOf, substring
 		//txt(확장자)를 추출하기 위해서 뒤에서 첫 .의 위치를 찾음
 		int index = fileName.lastIndexOf(".");
 		
 		//파일명에 .이 없으면 이미지가 아님
-		if(index < 0) {
+		if(index < 0 ) {
 			System.out.println(fileName + "은 이미지 파일이 아닙니다.");
 			return;
 		}
@@ -42,4 +42,5 @@ public class Ex01_String {
 			System.out.println(fileName + "은 이미지 파일이 아닙니다.");
 		}
 	}
+
 }
