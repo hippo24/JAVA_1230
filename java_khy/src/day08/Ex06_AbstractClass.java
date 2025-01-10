@@ -20,21 +20,21 @@ class B1 extends A1{
 }
 //추상 메소드가 있으면 반드시 추상 클래스로 만들어야 함
 abstract class A2{
-	//print는 추상 메소드
+	//print는 추상메소드
 	public abstract void print();
-	//print2는 구현이 안 된 메소드
+	//print2는 구현이 안된 메소드
 	public void print2() {}
 }
-//추상 클래스를 상속 받으면 추상 클래스가 될 수있다.
+//추상 클래스를 상속받으면 추상 클래스가 될 수 있다
 abstract class B2_1 extends A2{
 	
 }
-//추상 클래스를 상속 받았을 때, 추상 메소드를 오버라이딩하면 일반 클래스가 될 수있다.
+//추상 클래스를 상속받았을 때, 추상 메소드를 오버라이딩하면 일반 클래스가 될 수 있다
 class B2_2 extends A2{
 
 	@Override
 	public void print() {
-		System.out.println("출력합니다.");
+		System.out.println("출력합니다.");		
 	}
 	
 }
