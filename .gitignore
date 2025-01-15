@@ -28,3 +28,8 @@ replay_pid*
 
 .settings/
 bin/
+*.txt
+java_khy/src/day12/byte_stream
+java_khy/src/day12/byte_stream2
+java_khy/src/day12/char_stream
+java_khy/src/day12/object_stream
