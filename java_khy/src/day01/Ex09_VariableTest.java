@@ -16,3 +16,4 @@ public class Ex09_VariableTest {
 	}
 
 }
+	
