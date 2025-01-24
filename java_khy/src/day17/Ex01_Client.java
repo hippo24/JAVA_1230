@@ -38,7 +38,7 @@ public class Ex01_Client {
 		 * */
 		
 		//서버와 연결
-		String ip = "192.168.40.3";
+		String ip = "127.0.0.1";
 		int port = 5002;
 		Socket socket;
 		ObjectOutputStream oos;
