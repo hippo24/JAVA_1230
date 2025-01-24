@@ -71,7 +71,7 @@ public class ClientProgram {
 		Account account = inputAccount();
 		System.out.println("[접속 중]");
 		System.out.println("[같은 계정으로 다른 사용자가 먼저 사용중이면 대기할 수 있습니다.]");
-		//서버와 통신해서 account가 일치하는지 확인 => 서버에게 account왈 이치하는 계좌 정보를 달라고 요청
+		//서버와 통신해서 account가 일치하는지 확인 => 서버에게 account와 일치하는 계좌 정보를 달라고 요청
 		
 		//일치하지 않으면 안내문구 후 종료
 		
