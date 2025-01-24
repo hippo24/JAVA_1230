@@ -1,5 +1,5 @@
 package day18;
 
-public class Type {
-
+public enum Type {
+	입금, 출금
 }
