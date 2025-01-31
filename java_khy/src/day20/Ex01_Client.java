@@ -283,7 +283,7 @@ public class Ex01_Client {
 		//가져온 회원 정보가 없으면 안내문구 출력 후 종료 : 아이디 or 비번이 틀림
 		
 		
-		String authority = "관리자";
+		String authority = member.getAuthority();
 		
 		switch(authority) {
 		case "사용자":
