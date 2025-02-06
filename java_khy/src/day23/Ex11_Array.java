@@ -12,6 +12,7 @@ public class Ex11_Array {
 		//클래스 배열은 각 번지가 null로 초기화 되기 때문에 객체를 생성하서 넣어주지 않으면 필드,메소드를 사용할 수 없음
 		//반복문 전에 객체를 각 번지에 추가
 		for(int i = 0; i<arr.length; i++) {
+			arr[i] = new Point2(1,2);
 			System.out.println(arr[i].getX() + ", " + arr[i].getY());
 		}
 		
