@@ -17,7 +17,8 @@ public class Ex12_String {
 			str = scan.next();
 			System.out.println("출력 : " + str);
 			//문자열을 ==나 !=로 비교하면 정상적으로 작동하지 않을 수 있다. 그래서 equals를 이용
-		}while(str != "EXIT");
+		//}while(str != "EXIT");
+		}while(!str.equals("EXIT"));
 	}
 
 }
