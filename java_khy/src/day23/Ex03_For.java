@@ -10,9 +10,9 @@ public class Ex03_For {
 			System.out.println(i);
 		}
 		//증감식이 잘못되서 무수히 많이 실행 됨(정확히는 무한 루프는 아님)
-		for(int i = 10; i >= 1; i++) {
-			System.out.println(i);
-		}
+		//for(int i = 10; i >= 1; i++) {
+		//	System.out.println(i);
+		//}
 	}
 
 }
