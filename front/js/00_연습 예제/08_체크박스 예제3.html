@@ -10,13 +10,14 @@
 		}
 		.box{
 			height: 50px; border: 3px solid rgba(0,0,0,0.7);
-			font-size: 20px; line-height: 50px; width: 30%;
+			font-size: 20px; line-height: 50px; width: 22%;
 			text-align: center;
 		}
 	</style>
 </head>
 <body>
 	<div class="box-container">
+		<div class="box"></div>
 		<div class="box"></div>
 		<div class="box"></div>
 		<div class="box"></div>
@@ -54,15 +55,7 @@
 
 				//checked가 true이면 배열에 추가
 				if(checked){
-					//arrayPush 결과를 저장
-					let result = arrayPush(hobbies, value, boxes.length);
-					//arrayPush 결과가 false이면 
-					if(!result){
-						//alert으로 알림
-						alert("최대 3개까지 선택할 수 있습니다.");
-						//checked된 체크박스를 체크 해제
-						hobbyBox.checked = false;
-					}
+					arrayPush(hobbies, value, boxes.length);
 				}
 				//false이면 배열에서 위치를 찾아 제거
 				else{
