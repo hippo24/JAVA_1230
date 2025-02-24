@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>시험2</title>
+	<style>
+		.form-group{
+			display: flex;
+		}
+		.form-group ~ .form-group{
+			margin-top: 18px;
+		}
+		.form-left{
+			width: 130px; font-weight: bold;
+		}
+		.form-right{
+			width: 400px;
+			/* width: calc(100% - 100px); */
+		}
+		.first-margin{
+			margin-top: 40px;
+		}
+		.form-btn{
+			text-align: center;
+		}
+		.container{
+			background: skyblue; padding: 100px 0;
+			height: 80%;
+			width: 50%;
+			/* justify-content: center; */
+		}
+		.signup-container{
+			background: gainsboro;
+			margin: 150px;
+		}
+		.btn{
+			margin-top: 50px;
+			margin-bottom: 10px;
+			border: 0;
+			height: 60px;
+			width: 600px;
+			font-weight: bold;
+			font-size: large;
+			background: mediumaquamarine
+		}
+		[class^=error]{
+			color: red; line-height: 30px;
+		}
+		.email-box{display: flex;}
+		.form-group input{
+			box-sizing: border-box;
+			border: 1px dashed black; border-width: 0 0 1px;
+			width: calc(50% -10px);
+			background: gainsboro;
+		}
+		.email-box span{
+			width: 20px;
+		}
+		.form-email1{
+			width: 150px;
+		}
+		.form-email2{
+			width: 223px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="signup-container">
+			<form action="">
+				<fieldset>
+					<div class="form-group first-margin">
+						<label for="id" class="form-left">아이디</label>
+						<input type="text" name="id" id="id" class="form-right">
+					</div>
+					<div class="error-id"></div>
+
+					<div class="form-group">
+						<label for="pw" class="form-left">패스워드</label>
+						<input type="password" name="pw" id="pw" class="form-right">
+					</div>
+					<div class="error-pw"></div>
+
+					<div class="form-group">
+						<label for="pw2" class="form-left">패스워드 확인</label>
+						<input type="password" name="pw2" id="pw2" class="form-right">
+					</div>
+					<div class="error-pw2"></div>
+
+					<div class="form-group">
+						<label for="email" class="form-left">이메일</label>
+						<input type="email" name="email_prefix" class="form-email1">
+						<span>&nbsp;@&nbsp;</span>
+						<input type="email" name="email_suffix" class="form-email2">
+					</div>
+
+					<div class="form-group">
+						<label for="address" class="form-left">주소</label>
+						<input type="text" name="address" id="address" class="form-right">
+					</div>
+
+					<div class="form-btn">
+						<button type="btn" class="btn">가 입</button>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	<script src="../../static/js/jquery.min.js"></script>
+	<script>
+		const $id = $("#id");
+		const $pw = $("#pw");
+		const $pw2 = $("#pw2");
+		const $form = $("form");
+		
+		const idRegex = /^[a-zA-Z0-9]{8,16}$/;
+		const pwRegex = /^[a-zA-Z0-9!@#$]{8,32}$/;
+		
+		const $errorId = $(".error-id");
+		const $errorPw = $(".error-pw");
+		const $errorPw2 = $(".error-pw2");
+		
+
+
+
+		$("#id").blur(function(){
+			if($(this).val() == ""){
+				$errorId.text("필수 항목입니다.")
+				return;
+		}
+
+			if(!checkId()){
+				$errorId.text("아이디는 영문, 숫자만 가능하며, 8~16자입니다.");
+				return;
+		}
+
+			$errorId.text("");
+			console.log($(this).val())
+		});
+		
+		$("#pw").blur(function(){
+			if($(this).val() == ""){
+				$errorPw.text("필수 항목입니다.")
+				return;
+		}
+
+			if(!checkPw()){
+				$errorPw.text("패스워드는 영문, 숫자만 가능하며, 8~32자입니다.");
+				return;
+		}
+
+			$errorPw.text("");
+			console.log($(this).val())
+		});
+
+		$("#pw2").blur(function(){
+			if($(this).val() == ""){
+				$errorPw2.text("필수 항목입니다.")
+				return;
+		}
+
+			if(!confirmPw()){
+				$errorPw2.text("비번과 일치하지 않습니다.");
+				return;
+			}
+			$errorPw2.text("");
+		});
+
+		$form.submit(function(){
+			$id.trigger("input");
+			$pw.trigger("input");
+			$pw2.trigger("input");
+
+			if($errorId.text() != ""){
+				return false;
+			}
+			if($errorPw.text() != ""){
+				return false;
+			}
+			if($errorPw2.text() != ""){
+				return false;
+			}
+			return true;
+		});
+
+		function checkRegex(regex, str){
+			return regex.test(str);
+		}
+		function checkId(){
+			let id = $id.val();
+			return checkRegex(idRegex, id);
+		}
+		function checkPw(){
+			let pw = $pw.val();
+			return checkRegex(pwRegex, pw);
+		}
+		function confirmPw(){
+			let pw = $pw.val();
+			let pw2 = $pw2.val();
+			return pw == pw2;
+		}
+		function checkRequirment(str){
+			return str && str.trim() != "";
+		}
+	</script>
+</body>
+</html>
