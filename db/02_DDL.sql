@@ -1,182 +1,140 @@
-# 프로시저 : 일련의 쿼리를 하나의 함수처럼 실행하기 위한 쿼리의 집합 
-# 프로시저 목록 확인
-SHOW PROCEDURE STATUS;
-# 프로시저 스크립트 확인 
-# SAKILA DB에 있는 FILM_IN_STOCK 프로시저 확인 
-USE SAKILA;
-# Create Procedure에 있는 내용이 프로시저 스크립트 
-SHOW CREATE PROCEDURE FILM_IN_STOCK;
+# CREATE   : 생성
+# ALTER    : 수정
+# DROP     : 삭제
+# TRUNCATE : 테이블을 초기화
+# []는 생략 가능
 
+# 데이터베이스 생성
+# CREATE DATABASE [IF NOT EXISTS] DB명 
+# CREATE SCHEMA [IF NOT EXISTS] DB명 
+# IF NOT EXISTS가 없으면 있는 DB를 생성하려는 경우 쿼리에 에러가 발생
+# => 이후 쿼리를 실행할 수 없음
+DROP DATABASE IF EXISTS STUDENT;
+CREATE DATABASE IF NOT EXISTS STUDENT;
+
+# 데이터베이스 삭제
+# DROP DATABASE [IF EXISTS] DB명
+# DROP SCHEMA [IF EXISTS] DB명
+# DROP DATABASE IF EXISTS STUDENT;
+
+# 데이터베이스 문자 집합을 설정
+# ALTER SCHEMA DB명 DEFAULT CHARACTER SET 새CHARACTERSET DEFAULT COLLATE 새COLLATE;
+
+# 테이블 생성 
 /*
-프로시저 삭제 
-DROP PROCEDURE IF EXISTS 프로시저명; 
+CREATE TABLE [IF NOT EXISTS] 테이블명(
+	컬럼명 타입 [ZEROFILL] [UNIQUE] [NOT NULL] [DEFAULT 값] [PRIMARY KEY] [AUTO_INCREMENT],
+    ...,
+	[ CONSTRAINT 제약조건명 PRIMARY KEY(컬럼명),]
+    [ PRIMARY KEY(컬럼명),]
+    [ CONSTRAINT 제약조건명 FOREIGN KEY(컬럼명) REFERENCES 참조테이블명(기본키명),]
+    [ FOREIGN KEY(컬럼명) REFERENCES 참조테이블명(기본키명),]
+    [ CONSTRAINT 제약조건명 CHECK(논리식),]
+    [ CHECK(논리식)]
+);
 
-프로시저 정의 
-DELIMITER 기호 
-CREATE PROCEDURE 프로시저명(
-	[IN|OUT|INOUT 변수명1 타입,]
-	[...]
-)
-BEGIN
-	프로시저 구현;
-END 기호
-DELIMITER ;
-
-- 설명
-DELIMITER 
-  - 문장의 끝을 나타내는 기호를 정할 때 사용 
-  - 사용하는 이유 : 프로시저 안에 사용되는 ;이 프로시저를 정의하는 동안 실행되면 안되기 때문에,
-    프로시저를 정의하는 동안에 ;이 문장의 끝을 나타내는 기호가 아닌것처럼 사용하기 위해서 
-IN : 매개변수처럼 값을 프로시저 안에서 사용. 
-OUT : 프로시저 안에서 나온 결과를 넘길 때 사용 
-INOUT : 매개변수처럼 값을 가져와서 프로시저에서 사용하고 결과를 받아서 밖에서 활용 
-
-프로시저 호출 
-CALL 프로시저명(매개변수 또는 값들);
+ZEROFILL
+  - 앞에 0으로 채울 때 사용
+  - 5자리 숫자로 정하고, 1을 저장했을 때 앞에 4자리를 0으로 채움
+UNIQUE
+  - 컬럼들의 값들이 중복되면 안되는 경우 지정.(보통 대체키에) 
+NOT NULL
+  - 컬럼이 NULL값을 가지면 안될 때 사용 
+PRIMARY KEY
+  - 기본키 
+  - 제약 조건으로 설정할 수도 있지만 컬럼명 옆에 지정할 수 있다 
+  - NOT NULL + UNIQUE 
+AUTO_INCREMENT
+  - 기본키에만 가능, 정수형 속성에 지정 가능 
+  - 데이터를 추가할 때 기본키에 값을 지정하지 않으면 자동으로 1 증가되어서 추가 됨 
 */
-# 학생 성적을 추가할 때 성적 0미만, 100초과면 추가하지 않는 프로시저 
 USE STUDENT;
-DROP PROCEDURE IF EXISTS INSERT_SCORE;
+DROP TABLE IF EXISTS STUDENT.STUDENT;
+CREATE TABLE IF NOT EXISTS STUDENT.STUDENT(
+	ST_KEY INT PRIMARY KEY AUTO_INCREMENT, 
+    ST_GRADE INT NOT NULL DEFAULT 1,
+    ST_CLASS INT NOT NULL DEFAULT 1,
+    ST_NUM INT NOT NULL DEFAULT 1,
+    ST_NAME VARCHAR(20) NOT NULL,
+    CHECK(ST_GRADE >= 1), 
+    CHECK(ST_CLASS >= 1),
+    CHECK(ST_NUM >= 1)
+);
 
-DELIMITER //
-CREATE PROCEDURE INSERT_SCORE(
-	IN _ST_KEY INT,
-    IN _SJ_NUM INT,
-    IN _SCORE INT
-)
-BEGIN
-	IF _SCORE BETWEEN 0 AND 100 THEN
-		INSERT INTO SCORE(SC_ST_KEY, SC_SJ_NUM, SC_SCORE) VALUES(_ST_KEY, _SJ_NUM, _SCORE);
-    END IF;
-END //
-DELIMITER ;
+# 테이블 삭제 
+# DROP TABLE [IF EXISTS] 테이블명;
+# DROP TABLE STUDENT;
 
-CALL INSERT_SCORE(16, 7, 90);
-CALL INSERT_SCORE(16, 8, 150);
+# 테이블 수정 - 컬럼 추가
+# ALTER TABLE 테이블명 ADD 컬럼명 타입 [...];
+ALTER TABLE STUDENT ADD ST_TEST DATETIME DEFAULT CURRENT_TIMESTAMP;
 
-# 프로시저 예제
-DROP PROCEDURE IF EXISTS P_TEST1;
+# 테이블 수정 - 컬럼 수정 
+# ALTER TABLE 테이블명 CHANGE 기존컬럼명 새컬럼명 타입 [...];
+ALTER TABLE STUDENT CHANGE ST_TEST TEST CHAR(3) NOT NULL;
 
-DELIMITER //
-CREATE PROCEDURE P_TEST1(
-	IN _NUM INT,
-    OUT _RES INT
-)
-BEGIN
-	SET _RES = _NUM * 2;
-END //
-DELIMITER ;
+# 테이블 수정 - 컬럼 삭제 
+# ALTER TABLE 테이블명 DROP 컬럼명;
+ALTER TABLE STUDENT DROP TEST;
 
-# 세션 변수 VALUE 선언 
-SET @VALUE = 3;
-CALL P_TEST1(10, @VALUE);
-SELECT @VALUE;
+# 등록된 모든 CHECK 제약 조건 확인
+SELECT * FROM INFORMATION_SCHEMA.CHECK_CONSTRAINTS;
 
-DROP PROCEDURE IF EXISTS P_TEST2;
+# 테이블 수정 - 제약 조건 추가 
+# ALTER TABLE 테이블명 ADD CONSTRAINT 제약조건명 제약조건 
+ALTER TABLE STUDENT ADD CONSTRAINT STUDENT_CHK4 CHECK(ST_NAME != '');
 
-DELIMITER //
-CREATE PROCEDURE P_TEST2(
-	INOUT _NUM INT
-)
-BEGIN
-	SET _NUM = _NUM * 2;
-END //
-DELIMITER ;
-CALL P_TEST2(@VALUE);
-SELECT @VALUE;
+# 테이블 수정 - 제약 조건 삭제
+# ALTER TABLE 테이블명 DROP CONSTRAINT 제약조건명;
+ALTER TABLE STUDENT DROP CONSTRAINT STUDENT_CHK4;
 
-/* 
-프로시저에서 사용하는 문법 
-1. 변수 선언 
-  - 변수는 프로시저 시작 위치에 모아 놓아야 함. 중간에 선언할 수 없음. 
-DECLARE 변수명 자료형 [DEFAULT 초기값];
-2. 검색 결과를 변수에 저장 
-SET 변수 = (SELECT 속성 FROM 테이블명 [WHERE ...]);
-3. 조건문 - IF
-IF 조건식 THEN
-	실행문;
-ELSEIF 조건식 THEN
-	실행문;
-ELSE
-	실행문;
-END IF;
-4. 조건문 - CASE 
-CASE 변수 
-	WHEN 값 THEN
-		실행문;
-	WHEN 값 THEN
-		실행문;
-	ELSE 
-		실행문;
-END CASE;
-5. 반복문 - WHILE
-WHILE 조건식 DO
-	실행문;
-END WHILE;
-6. 반복문 - REPEAT
-REPEAT
-	실행문;
-UNTIL 조건식
-END REPEAT;
-7. 반복문 - CURSOR 
-  - 검색 결과를 반복문으로 활용할 때 
-DECLARE 커서명 CURSOR FOR SELECT 속성1, ... FROM 테이블명;
-DECLARE CONTINUE HANDLER FOR NOT FOUND SET 변수명A = TRUE;
-OPEN 커서명;
-루프명 : LOOP
-FETCH 커서명 INTO 변수명1 , ....; 
-IF 변수명A THEN
-	LEAVE 루프명;
-END IF;
-반복문 실행문;
-END LOOP;
-CLOSE 커서명; studentstudent
+# 테이블 초기화 : AUTO_INCREMENT 값을 1로 초기화 및 데이터 제거 
+# TRUNCATE TABLE 테이블명;
+/*
+INSERT INTO STUDENT.STUDENT(ST_GRADE, ST_CLASS, ST_NUM, ST_NAME)
+VALUES(1,1,1, "홍길동"), (1,1,2,"임꺽정"); 
+
+SELECT * FROM STUDENT.STUDENT;
+
+INSERT INTO STUDENT.STUDENT(ST_GRADE, ST_CLASS, ST_NUM, ST_NAME)
+VALUES(1,1,3, "홍길동"), (1,1,4,"임꺽정"); 
+
+SELECT * FROM STUDENT.STUDENT;
+
+TRUNCATE TABLE STUDENT.STUDENT;
+# DELETE FROM STUDENT.STUDENT;
 */
 
-# AVERAGE 테이블에 등록된 학생만큼 1학년 1학기~3학년 2학기 평균 초기 데이터를 추가하는 프로시저 
+DROP TABLE IF EXISTS STUDNET.SUBJECT;
 
-DROP PROCEDURE IF EXISTS INIT_AVERAGE;
+CREATE TABLE STUDENT.SUBJECT(
+	SJ_NUM INT PRIMARY KEY AUTO_INCREMENT,
+    SJ_GRADE INT NOT NULL DEFAULT 1,
+    SJ_SEMESTER ENUM("1", "2") NOT NULL DEFAULT "1",
+    SJ_NAME VARCHAR(10) NOT NULL,
+    CHECK(SJ_GRADE IN (1,2,3))
+);
 
-DELIMITER //
-CREATE PROCEDURE INIT_AVERAGE()
-BEGIN
-	DECLARE _COUNT INT;
-    DECLARE _DONE BOOLEAN DEFAULT FALSE;
-    DECLARE _ST_KEY INT;
-    DECLARE _GRADE INT DEFAULT 1;
-    DECLARE _SEMESTER INT DEFAULT 1;
-    
-    DECLARE _CURSOR CURSOR FOR SELECT ST_KEY FROM STUDENT;
-    DECLARE CONTINUE HANDLER FOR NOT FOUND SET _DONE = TRUE;
-    
-    
-    
-    SET _COUNT = (SELECT COUNT(*) FROM AVERAGE);
-	
-    IF _COUNT = 0 THEN
-		OPEN _CURSOR;
-		CURSOR_LOOP : LOOP 
-			
-			FETCH _CURSOR INTO _ST_KEY;
-			SET _GRADE = 1;
-            IF _DONE THEN
-				LEAVE CURSOR_LOOP;
-			END IF;
-            
-            WHILE _GRADE <= 3 DO
-				REPEAT
-					INSERT AVERAGE(AV_ST_KEY, AV_GRADE, AV_SEMESTER, AV_SUM, AV_COUNT)
-                    VALUES(_ST_KEY, _GRADE, _SEMESTER, 0, 0);
-                    SET _SEMESTER = _SEMESTER + 1;
-                UNTIL _SEMESTER > 2
-                END REPEAT;
-                SET _SEMESTER = 1;
-                SET _GRADE = _GRADE + 1;
-            END WHILE;
-        END LOOP;
-        CLOSE _CURSOR;
-    END IF;
-    
-END //
-DELIMITER ;
-CALL INIT_AVERAGE();
+DROP TABLE IF EXISTS STUDENT.SCORE;
+
+CREATE TABLE STUDENT.SCORE(
+	SC_NUM INT PRIMARY KEY AUTO_INCREMENT,
+    SC_ST_KEY INT NOT NULL,
+    SC_SJ_NUM INT NOT NULL,
+    SC_SCORE INT NOT NULL DEFAULT 0,
+    CHECK(SC_SCORE BETWEEN 0 AND 100),
+    FOREIGN KEY(SC_ST_KEY) REFERENCES STUDENT.STUDENT(ST_KEY),
+    FOREIGN KEY(SC_SJ_NUM) REFERENCES STUDENT.SUBJECT(SJ_NUM)
+);
+
+DROP TABLE IF EXISTS STUDENT.AVERAGE;
+
+CREATE TABLE STUDENT.AVERAGE(
+	AV_NUM INT PRIMARY KEY AUTO_INCREMENT, 
+    AV_ST_KEY INT NOT NULL,
+    AV_GRADE INT NOT NULL,
+    AV_SEMESTER INT NOT NULL,
+    AV_SUM INT NOT NULL,
+    AV_COUNT INT NOT NULL,
+    FOREIGN KEY(AV_ST_KEY) REFERENCES STUDENT.STUDENT(ST_KEY)
+);
