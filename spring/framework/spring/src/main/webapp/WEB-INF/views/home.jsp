@@ -1,5 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!doctype html>    
 <html>
 <head>
 	<title>Home</title>
@@ -8,8 +10,10 @@
 <h1>
 	Hello world!  
 </h1>
-
-<P>  The time on the server is ${serverTime}. </P>
-<a href="http://www.naver.com">go to naver</a>
+<!--  
+서버에서 보낸 데이터를 처리할 때는 $`{화면에서 사용할 이름}을 이용하여 활용
+- 단 주석에서도 인식 되기 때문에 주석에서 조심히 작성.
+-->
+<P>  서버에서 보낸 제 이름은 ${name}입니다. </P>
 </body>
 </html>
