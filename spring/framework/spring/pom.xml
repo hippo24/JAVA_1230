@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>kr.kh</groupId>
 	<artifactId>spring</artifactId>
-	<name>spring</name>
+	<name>spring_t</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -116,6 +116,13 @@
 			<version>4.7</version>
 			<scope>test</scope>
 		</dependency>        
+		<!-- 롬복 -->
+		<dependency>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <version>1.18.36</version>
+		</dependency>
+				
 	</dependencies>
     <build>
         <plugins>
