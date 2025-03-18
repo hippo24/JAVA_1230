@@ -14,15 +14,15 @@ import kr.kh.spring.service.PostService;
 public class PostController {
 
 	@Autowired
-	private PostService postService;
+	private PostService boardService;
 	
-	@GetMapping("/post/list")
-	public String postList(Model model) {
+	@GetMapping("/board/list")
+	public String boardList(Model model) {
 		//게시글 목록 전체를 가져옴
-		List<PostVO> list = postService.getPostList();
+		List<PostVO> list = boardService.getBoardList();	
 		//화면에 게시글 목록을 전송
-		//매퍼의 resultType=kr.kh.spring.model.vo.postVO
+		//매퍼의 resultType=kr.kh.spring.model.vo.BoardVO
 		model.addAttribute("list", list);
-		return "/post/list";
+		return "/board/list";
 	}
 }
