@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import kr.kh.spring.model.vo.MemberVO;
 import kr.kh.spring.model.vo.PostVO;
 import kr.kh.spring.service.PostService;
 
@@ -24,5 +25,24 @@ public class PostController {
 		//매퍼의 resultType=kr.kh.spring.model.vo.postVO
 		model.addAttribute("list", list);
 		return "/post/list";
+	}
+	
+	@GetMapping("/post/insert")
+	public String postInsert() {
+		
+		return "/post/insert";
+	}
+	
+	@GetMapping("/post/insert")
+	public String postInsertPost(PostVO post) {
+		//추후 삭제될 예정
+		MemberVO user = new MemberVO();
+		user.setMe_id("admin");
+		if(postService.insertPost(post, user)) {
+			
+		}else {
+			
+		}
+		return "redirect:/post/list";
 	}
 }

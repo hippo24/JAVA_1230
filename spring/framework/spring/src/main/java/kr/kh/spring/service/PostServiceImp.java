@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.kh.spring.dao.PostDAO;
 import kr.kh.spring.model.vo.BoardVO;
+import kr.kh.spring.model.vo.MemberVO;
 import kr.kh.spring.model.vo.PostVO;
 
 @Service
@@ -52,5 +53,20 @@ public class PostServiceImp implements PostService {
 		return postDao.updateBoard(board);
 	}
 
+	@Override
+	public boolean insertPost(PostVO post, MemberVO user) {
+		if( post == null || 
+			post.getPo_title().trim().length() == 0 ||
+			post.getPo_content().length() == 0) {
+			return false;
+		}
+		if(user == null) {
+			return false;
+		}
+		post.setPo_me_id(user.getMe_id());
+		boolean res = postDao.insertPost(post);
 		
+		return res;
+	}
+	
 }
