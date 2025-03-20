@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import kr.kh.spring.model.vo.BoardVO;
 import kr.kh.spring.model.vo.MemberVO;
 import kr.kh.spring.model.vo.PostVO;
 import kr.kh.spring.service.PostService;
@@ -28,8 +29,10 @@ public class PostController {
 	}
 	
 	@GetMapping("/post/insert")
-	public String postInsert() {
-		
+	public String postInsert(Model model) {
+		//등록된 게시판 리스트를 가져와서 화면에 전송
+		List<BoardVO> list = postService.getBoardList();
+		model.addAttribute("list", list);
 		return "/post/insert";
 	}
 	
