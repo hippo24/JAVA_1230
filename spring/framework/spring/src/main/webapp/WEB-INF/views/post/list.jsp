@@ -13,6 +13,9 @@
 		<thead>
 			<tr>
 				<th>번호</th>
+				
+				<th>게시판</th>
+				
 				<th>제목</th>
 				<th>작성자</th>
 				<th>작성일</th>
@@ -27,7 +30,7 @@
 					<td>${post.po_bo_name}</td>
 					
 					<td>
-						<a href="#">${post.po_title }</a>
+						<a href="<c:url value="/post/detail/${post.po_num}"/>">${post.po_title }</a>
 					</td>
 					<td>${post.po_me_id }</td>
 					<td><fmt:formatDate value="${post.po_date }" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
@@ -41,6 +44,21 @@
 			</c:if>
 		</tbody>
 	</table>
-	<a href="<c:url value="/post/insert"/>" class="btn btn-outline-success">게시글 등록</a>
+	<a href="<c:url value="/post/insert"/>" class="btn btn-outline-success btn-insert">게시글 등록</a>
+	<script type="text/javascript">
+		$(".btn-insert").click(function(e){
+			//로그인 했으면
+			if(${user != null}){
+				return;
+			}
+			e.preventDefault();
+			//안했으면
+			if(confirm("로그인이 필요한 서비스입니다.\n로그인 페이지로 이동하겠습니까?")){
+				location.href = "<c:url value="/login"/>";
+				
+			}
+		})
+		
+	</script>
 </body>
 </html>
