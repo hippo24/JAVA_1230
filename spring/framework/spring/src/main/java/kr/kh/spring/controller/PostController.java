@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.kh.spring.model.vo.BoardVO;
 import kr.kh.spring.model.vo.MemberVO;
@@ -36,7 +37,7 @@ public class PostController {
 		return "/post/insert";
 	}
 	
-	@GetMapping("/post/insert")
+	@PostMapping("/post/insert")
 	public String postInsertPost(PostVO post) {
 		//추후 삭제될 예정
 		MemberVO user = new MemberVO();

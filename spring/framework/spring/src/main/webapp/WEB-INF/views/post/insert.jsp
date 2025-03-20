@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs4.min.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs4.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs4.min.js"></script>
 </head>
 <body>
@@ -24,9 +24,16 @@
 		</div>
 		<div class="form-group mt-3">
 			<label for="content" class="form-label">내용</label>
-			<textarea class="form-control" id="content" name="bo_content" rows="10"></textarea>
+			<textarea class="form-control" id="content" name="po_content" rows="10"></textarea>
 		</div>
 		<button type="submit" class="btn btn-outline-success mt-3 col-12">게시글 등록</button>
 	</form>
+	<script type="text/javascript">
+		$('#content').summernote({
+	        placeholder: '내용을 입력하세요.',
+	        tabsize: 2,
+	        height: 400
+      	});
+	</script>
 </body>
 </html>

@@ -23,6 +23,9 @@
 			<c:forEach items="${list }" var="post">
 				<tr>
 					<td>${post.po_num}</td>
+					
+					<td>${post.po_bo_name}</td>
+					
 					<td>
 						<a href="#">${post.po_title }</a>
 					</td>

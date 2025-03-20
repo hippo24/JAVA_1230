@@ -55,8 +55,8 @@ public class PostServiceImp implements PostService {
 
 	@Override
 	public boolean insertPost(PostVO post, MemberVO user) {
-		if( post == null || 
-			post.getPo_title().trim().length() == 0 ||
+		if(	post == null || 
+			post.getPo_title().trim().length() == 0 || 
 			post.getPo_content().length() == 0) {
 			return false;
 		}
@@ -66,7 +66,9 @@ public class PostServiceImp implements PostService {
 		post.setPo_me_id(user.getMe_id());
 		boolean res = postDao.insertPost(post);
 		
+		
 		return res;
 	}
-	
+
+		
 }
