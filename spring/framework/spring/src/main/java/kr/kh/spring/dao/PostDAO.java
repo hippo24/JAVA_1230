@@ -9,7 +9,7 @@ import kr.kh.spring.model.vo.PostVO;
 
 public interface PostDAO {
 
-	List<PostVO> selectPostList(@Param("po_bo_num")int po_num);
+	List<PostVO> selectPostList(@Param("po_bo_num")int po_bo_num);
 
 	List<BoardVO> selectBoardList();
 
@@ -29,5 +29,6 @@ public interface PostDAO {
 
 	void updateView(@Param("po_num")int po_num);
 
+	
 	
 }

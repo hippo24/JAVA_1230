@@ -10,7 +10,7 @@
 <body>
 	<h1>게시글 수정</h1>
 	<form action="<c:url value="/post/update"/>" method="post">
-		<input type="hidden" name="po_num" value="${post.po_num }">
+		<input type="hidden" name="po_num" value="${post.po_num}">
 		<div class="form-group mt-3">
 			<label for="board" class="form-label">게시판</label>
 			<select class="form-control" id="board" name="po_bo_num">
