@@ -21,7 +21,7 @@
 </head>
 <body>
 	<h1>게시글 수정</h1>
-	<form action="<c:url value="/post/update"/>" method="post">
+	<form action="<c:url value="/post/update"/>" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="po_num" value="${post.po_num}">
 		<div class="form-group mt-3">
 			<label for="board" class="form-label">게시판</label>
@@ -47,7 +47,7 @@
 			<c:forEach items="${fileList }" var="file">
 				<div class="form-control" style="position: relative;">
 					<span>${file.fi_ori_name}</span>
-					<a href="javascript:void(0);" class="del" data-num="${file.fi_num}">&times;"</a>
+					<a href="javascript:void(0);" class="del" data-num="${file.fi_num}">&times;</a>
 				</div>
 			</c:forEach>
 		</div>
