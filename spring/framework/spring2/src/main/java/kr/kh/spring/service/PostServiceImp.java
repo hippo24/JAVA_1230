@@ -84,18 +84,7 @@ public class PostServiceImp implements PostService {
 		}
 		
 		for(MultipartFile file : fileList) {
-			String fi_ori_name = file.getOriginalFilename();
-			//파일명이 없으면
-			if(fi_ori_name == null || fi_ori_name.length() == 0) {
-				continue;
-			}
-			try {
-				String fi_name = UploadFileUtils.uploadFile(uploadPath, fi_ori_name, file.getBytes());
-				FileVO fileVo = new FileVO(fi_ori_name, fi_name, post.getPo_num());
-				postDao.insertFile(fileVo);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			uploadFile(file, post.getPo_num());
 		}
 		return true;
 	}
@@ -108,7 +97,7 @@ public class PostServiceImp implements PostService {
 		}
 		try {
 			String fi_name = UploadFileUtils.uploadFile(uploadPath, fi_ori_name, file.getBytes());
-			FileVO fileVo = new FileVO(fi_ori_name, fi_name, po_num());
+			FileVO fileVo = new FileVO(fi_ori_name, fi_name, po_num);
 			postDao.insertFile(fileVo);
 		} catch (Exception e) {
 			e.printStackTrace();
