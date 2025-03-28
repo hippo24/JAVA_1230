@@ -53,7 +53,6 @@
 			<h3>등록되지 않거나 삭제된 게시글입니다.</h3>		
 		</c:otherwise>
 	</c:choose>
-	
 	<div class="d-flex justify-content-between">
 		<a href="<c:url value="/post/list"/>" class="btn btn-outline-success">목록</a>
 		<c:if test="${user.me_id eq post.po_me_id }">
@@ -63,5 +62,36 @@
 			</div>
 		</c:if>
 	</div>
+	<hr>
+	<h3>댓글</h3>
+	<div class="comment-container">
+		
+	</div>
+	
+	<!-- 댓글 목록 조회 -->
+	<script type="text/javascript">
+		var cri = {
+			page : 1,
+			search : ${post.po_num}
+		}
+		function getCommentList(cri){
+			//ajax로 댓글 리스트를 가져와서 화면에 출력
+			$.ajax({
+				async : true, //비동기 : true(비동기), false(동기)
+				url : '<c:url value="/comment/list"/>', 
+				type : 'post', 
+				data : JSON.stringify(cri),
+				contentType : "application/json; charset=utf-8",
+				success : function (data){
+						$(".comment-container").html(data);
+				}, 
+				error : function(jqXHR, textStatus, errorThrown){
+
+				}
+			});
+		}
+		
+		getCommentList(cri);
+	</script>
 </body>
 </html>

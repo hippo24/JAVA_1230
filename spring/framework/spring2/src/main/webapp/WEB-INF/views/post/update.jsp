@@ -8,11 +8,11 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs4.min.js"></script>
     <style type="text/css">
     	.del{
-    		position: absolute; top:50%; right:0;
+    		position: absolute; top:50%;right:0;
     		width: 30px; height: 30px; line-height: 24px;
-    		font-size: 24px; transform : translateY(-50%);
+    		font-size : 24px; transform : translateY(-50%);
     		text-align: center; cursor: pointer;
-    		color: black;
+    		color : black; 
     	}
     	.del:hover{
     		text-decoration: none; color: red;
@@ -59,9 +59,10 @@
 	        tabsize: 2,
 	        height: 400
       	});
-		$(".del").click(function(e) {
+		$(".del").click(function(e){
 			//삭제할 첨부파일 번호를 가져옴
 			let fi_num = $(this).data("num");
+
 			let inputTag = `<input type="file" class="form-control" name="fileList">`;
 			let hiddenTag = `<input type="hidden" name="delNums" value="\${fi_num}">`;
 			

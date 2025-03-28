@@ -14,10 +14,11 @@ public class PageMaker {
 	
 	//이전 페이지 활성화 여부, 다음 페이지 활성화 여부, 마지막 페이지 번호를 계산하는 메소드
 	public void calculate() {
+		
 		//컨텐츠 수와 상관 없이 현재 페이지에 가능한 최대 마지막 페이지를 계산
 		endPage = (int)(Math.ceil(cri.getPage()/(double)displayPageNum)*displayPageNum);
 		
-		//최대 마지막 페이지를 이용하여 시작 페이지를 계산
+		//최대 마지막 페이지를 이용하여 시작 페이지를 계산 
 		startPage = endPage - displayPageNum + 1;
 		
 		//컨텐츠 개수를 이용하여 계산한 모든 페이지의 최대 페이지 번호

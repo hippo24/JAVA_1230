@@ -36,7 +36,7 @@ public class PostController {
 		
 		
 		PageMaker pm = postService.getPageMaker(cri);
-		
+
 		//화면에 게시글 목록을 전송
 		//매퍼의 resultType=kr.kh.spring.model.vo.postVO
 		model.addAttribute("boardList", boardList);
@@ -123,10 +123,6 @@ public class PostController {
 	@PostMapping("/post/update")
 	public String postUpdatePost(Model model, PostVO post, 
 			HttpSession session, MultipartFile [] fileList, int [] delNums) {
-		
-		for(int num : delNums) {
-			System.out.println(num);
-		}
 		MemberVO user = (MemberVO) session.getAttribute("user");
 		if(postService.updatePost(post, user, fileList, delNums)) {
 			model.addAttribute("msg", "게시글을 수정했습니다.");

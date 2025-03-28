@@ -16,12 +16,12 @@
 		<choose>
 			<when test="cri.type == 0">
 				and (po_title like concat('%', #{cri.search}, '%') 
-				or po_content like concat('%', #{cri.search}, '%')
+				or po_content like concat('%', #{cri.search}, '%') 
 				or po_me_id = #{cri.search})
 			</when>
 			<when test="cri.type == 1">
 				and (po_title like concat('%', #{cri.search}, '%') 
-				or po_content like concat('%', #{cri.search}, '%')
+				or po_content like concat('%', #{cri.search}, '%'))
 			</when>
 			<when test="cri.type == 2">
 				and po_me_id = #{cri.search}
@@ -85,6 +85,9 @@
 	<delete id="deleteFile">
 		delete from file where fi_num = #{fi_num}
 	</delete>
+	<select id="selectFile" resultType="FileVO">
+		select * from file where fi_num = #{fi_num}	
+	</select>
 	<select id="selectCountPostList" resultType="int">
 		select 
 			count(*)
@@ -96,12 +99,12 @@
 		<choose>
 			<when test="cri.type == 0">
 				and (po_title like concat('%', #{cri.search}, '%') 
-				or po_content like concat('%', #{cri.search}, '%')
+				or po_content like concat('%', #{cri.search}, '%') 
 				or po_me_id = #{cri.search})
 			</when>
 			<when test="cri.type == 1">
 				and (po_title like concat('%', #{cri.search}, '%') 
-				or po_content like concat('%', #{cri.search}, '%')
+				or po_content like concat('%', #{cri.search}, '%'))
 			</when>
 			<when test="cri.type == 2">
 				and po_me_id = #{cri.search}
