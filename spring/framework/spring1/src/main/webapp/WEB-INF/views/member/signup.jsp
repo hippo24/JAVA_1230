@@ -37,7 +37,7 @@
 	<script type="text/javascript">
 	
 		$("#id").on("input",function(e){
-			//checkId();
+			checkId();
 		});
 		function checkId(){
 			//입력한 아이디를 가져옴
@@ -115,7 +115,7 @@
 			},
 			//유효성 검사 체크 후 전송하기 직전에 확인하고 싶을 때 사용. return true 전송
 			submitHandler : function(){
-				return true; //checkId();
+				return checkId();
 			}
 		})
 		$.validator.addMethod("regex", function(value, element, regex){
