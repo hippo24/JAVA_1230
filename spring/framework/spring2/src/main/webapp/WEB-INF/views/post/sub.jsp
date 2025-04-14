@@ -1,16 +1,23 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <html>
 <head>
 </head>
 <body>
 	<!-- 서버에서 보낸 게시글 목록을 이용하여 화면을 구성. 이미지는 고정 -->
 	<c:forEach items="${list}" var="post">
-		<div class="form-group">
+		<div class="form-group ">
 			<div class="form-control input-group" style="min-height: auto; height: auto">
-				<img width="100" height="120" src="https://flexible.img.hani.co.kr/flexible/normal/960/960/imgdb/resize/2019/0121/00501111_20190121.webp">
+				<c:choose>
+					<c:when test="${post.po_fi_name ne null }">
+						<img width="100" height="120" src="<c:url value="/download${post.po_fi_name }"/>">
+					</c:when>
+					<c:otherwise>
+						<img width="100" height="120" src="<c:url value="/resources/base.png"/>">
+					</c:otherwise>
+				</c:choose>
 				<div class="ml-3">
 					<div>${post.po_title }</div>
 					<div>작성자 : ${post.po_me_id }</div>

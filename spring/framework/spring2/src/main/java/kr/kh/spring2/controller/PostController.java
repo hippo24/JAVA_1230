@@ -30,12 +30,13 @@ public class PostController {
 		model.addAttribute("list", list);
 		return "/post/list";
 	}
+
 	@PostMapping("/list")
 	public String listPost(Model model, @RequestBody PostCriteria cri) {
 		cri.setPerPageNum(2);
-		//num를 서비스에게 주면서 게시판 번호에 맞는 게시글 목록 중 2개를 가져오라고 요청
+		//num를 서비스에게 주면서 게시판 번호에 맞는 게시글 목록 중 2개를 가져오라고 요청.
 		List<PostVO> list = postService.getPostList(cri);
-		//현재 페이지 정보를 주고 PageMaker 객체를 달라고 요청
+		//서비스에게 현재 페이지 정보를 주고 PageMaker 객체를 달라고 요청
 		PageMaker pm = postService.getPageMaker(cri);
 		
 		//가져온 게시글 목록을 화면에 전송
