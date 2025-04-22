@@ -1,18 +1,13 @@
 package kr.kh.boot.controller;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import kr.kh.boot.model.vo.CustomUser;
 import kr.kh.boot.model.vo.MemberVO;
 import kr.kh.boot.service.MemberService;
 
@@ -35,6 +30,8 @@ public class HomeController {
 	public String login() {
 		return "member/login";
 	}
+	
+
 
 	@GetMapping("/test")
 	public String test(Model model) {
@@ -70,12 +67,5 @@ public class HomeController {
 		return "test";
 	}
 	
-	// @GetMapping("/")
-	// public String home(Model model,	@AuthenticationPrincipal CustomUser customUser) {
-	// 	if(customUser != null){
-	// 		MemberVO user = customUser.getMember();
-	// 		System.out.println(user.getMe_pw());
-	// 	}
-	// 	return "home";
-	// }
+	
 }

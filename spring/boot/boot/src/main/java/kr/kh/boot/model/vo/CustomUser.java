@@ -19,8 +19,8 @@ public class CustomUser extends User {
 	}
 	public CustomUser(MemberVO vo) {
 		this(	vo.getMe_id(),
-				vo.getMe_pw(), 
-				Arrays.asList(new SimpleGrantedAuthority(vo.getMe_authority())));
+			vo.getMe_pw(), 
+			Arrays.asList(new SimpleGrantedAuthority(vo.getMe_authority())));
 		this.member = vo;
 	}
 }

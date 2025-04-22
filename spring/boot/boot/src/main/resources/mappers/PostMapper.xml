@@ -13,7 +13,7 @@
 	</select>
 	<select id="selectPost" resultType="PostVO">
 		select * from post where po_del = 'N' and po_num = #{po_num}
-	<select>
+	</select>
 	<select id="selectFileList" resultType="FileVO">
 		select * from file where fi_po_num = #{po_num}
 	</select>

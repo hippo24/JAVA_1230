@@ -31,5 +31,4 @@ public class PostService {
 	public List<FileVO> getFileList(int po_num) {
 		return postDAO.selectFileList(po_num);
 	}
-
 }
