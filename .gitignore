@@ -57,7 +57,7 @@ node_modules
 
 test/
 
-bin/
-*.txt
+.metadata
+*.class
 
 config.properties
