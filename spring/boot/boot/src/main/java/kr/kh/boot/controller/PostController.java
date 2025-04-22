@@ -28,7 +28,7 @@ public class PostController {
 		List<PostVO> list = postService.getPostList(bo_num);
 		model.addAttribute("list", list);
 		model.addAttribute("url", "/post/list");
-		model.addAttribute("boardList", list);
+		model.addAttribute("boardList", boardList);
 		return "post/list";
 	}
 	

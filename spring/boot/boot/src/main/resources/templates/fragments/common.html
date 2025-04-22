@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +13,17 @@
 				<li class="nav-item" th:classappend="${url == '/' ? 'active' : ''}">
 					<a class="nav-link" th:href="@{/}">홈</a>
 				</li>
+				<th:block sec:authorize="isAnonymous()">
+				<li class="nav-item" th:classappend="${url == '/login' ? 'active' : ''}">
+					<a class="nav-link" th:href="@{/login}">로그인</a>
+				</li>
+				</th:block>
+				<th:block sec:authorize="isAuthenticated()">
+				<li class="nav-item" th:classappend="${url == '/' ? 'active' : ''}">
+					<a class="nav-link" th:href="@{/logout}">로그아웃</a>
+				</li>
+				</th:block>
+
 				<li class="nav-item" th:classappend="${url == '/post/list' ? 'active' : ''}">
 					<a class="nav-link" th:href="@{/post/list/0}">게시글 목록</a>
 				</li>

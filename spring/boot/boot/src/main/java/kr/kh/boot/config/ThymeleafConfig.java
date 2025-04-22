@@ -2,6 +2,7 @@ package kr.kh.boot.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.thymeleaf.extras.springsecurity6.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
@@ -16,6 +17,7 @@ public class ThymeleafConfig {
 		templateEngine.setTemplateResolver(templateResolver);
 		templateEngine.setCacheManager(null); // 캐시 매니저 설정을 null로 지정
 		templateEngine.addDialect(new LayoutDialect());
+		templateEngine.addDialect(new SpringSecurityDialect()); // 로그인 로그아웃	
 		return templateEngine;
 	}
 }
