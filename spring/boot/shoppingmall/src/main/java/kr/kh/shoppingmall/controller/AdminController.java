@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.kh.shoppingmall.model.vo.CategoryVO;
 import kr.kh.shoppingmall.service.ProductService;
@@ -34,10 +35,9 @@ public class AdminController {
 		return "admin/category";
 	}
 	@GetMapping("/category/insert")
+	@ResponseBody
 	public String categoryInsert(CategoryVO category) {
-		String res = productService.insertCategory(category);
-		System.out.println(res);
-		return "redirect:/admin/category";
+		return productService.insertCategory(category);
 	}
 	
 }
