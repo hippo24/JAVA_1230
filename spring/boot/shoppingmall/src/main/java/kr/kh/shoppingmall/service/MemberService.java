@@ -45,9 +45,9 @@ public class MemberService {
 		if(memberDAO.selectMember(member.getMe_id()) != null)	{
 			return false;
 		}
-		try {
+		try{
 			return memberDAO.insertMember(member);
-		} catch (Exception e) {
+		}catch(Exception e){
 			return false;
 		}
 	}
