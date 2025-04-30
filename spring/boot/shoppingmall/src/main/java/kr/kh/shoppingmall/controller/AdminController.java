@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import kr.kh.shoppingmall.model.vo.CategoryVO;
 import kr.kh.shoppingmall.model.vo.ProductVO;
+import kr.kh.shoppingmall.service.AdminService;
 import kr.kh.shoppingmall.service.ProductService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -66,12 +67,11 @@ public class AdminController {
 		model.addAttribute("categoryList", categoryList);
 		return "admin/product_insert";
 	}
-	
 	@PostMapping("/product/insert")
 	public String productInsertPost(ProductVO product, MultipartFile thumb) {
 		if(productService.insertProduct(product, thumb)){
-			return "redirect:/admin/product"; //+product.getPr_ca_num();
+			return "redirect:/admin/product";//+product.getPr_ca_num();
 		}
-		return "redirect:/admin/product/insert" +product.getPr_ca_num();
+		return "redirect:/admin/product/insert/" +product.getPr_ca_num();
 	}
 }

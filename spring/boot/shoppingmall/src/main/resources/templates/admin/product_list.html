@@ -13,7 +13,7 @@ layout:decorate="~{layout/admin_layout.html}">
 		<div class="mb-3 d-flex justify-content-end">
 			<a th:href="@{/admin/product/insert/0}" class="btn btn-success">제품 등록</a>
 		</div>
-		<table class="table table-striped table-hover">
+		<table class="table table-bordered table-hover">
 			<thead>
 				<tr>
 					<th>코드</th>
@@ -30,9 +30,8 @@ layout:decorate="~{layout/admin_layout.html}">
 					<td th:text="${product.pr_code}"></td>
 					<td th:text="${product.pr_ca_num}"></td>
 					<td>
-						<img th:src="/file/'+${product.pr_thumb}" alt="이미지 없음" height="50" width="50">
+						<img th:src="'/file/'+${product.pr_thumb}" alt="이미지 없음" height="50" width="50">
 					</td>
-					<td th:text="${product.pr_thumb}"></td>
 					<td th:text="${product.pr_title}"></td>
 					<td th:text="${product.pr_price}"></td>
 					<td th:text="${product.pr_amount}"></td>
@@ -40,7 +39,6 @@ layout:decorate="~{layout/admin_layout.html}">
 				</tr>
 			</tbody>
 		</table>
-		</div>
 	</main>
 </body>
 </html>

@@ -12,16 +12,17 @@ layout:decorate="~{layout/admin_layout.html}">
 <body >
 	<main layout:fragment="content" class="container mb-5">
 		<h1 class="my-3">제품 등록</h1>
-		<form action="@{/admin/product/insert}" method="post" enctype="multipart/form-data">
+		<form th:action="@{/admin/product/insert}" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="category">카테고리</label>
 				<select name="pr_ca_num" id="category" class="form-control">
 					<option value="0">카테고리를 선택하세요.</option>
-					<option th:each="category : ${categoryList}" 
+					<option 
+						th:each="category : ${categoryList}" 
 						th:value="${category.ca_num}" 
 						th:text="${category.ca_name}" 
-						th:selected="${category.ca_num == ca_num}">
-					</option>
+						th:selected="${category.ca_num == ca_num}"
+					></option>
 				</select>
 			</div>
 			<div class="form-group">
@@ -29,7 +30,7 @@ layout:decorate="~{layout/admin_layout.html}">
 				<input type="text" name="pr_title" id="title" class="form-control">
 			</div>
 			<div class="form-group">
-				<label for="title">수량</label>
+				<label for="amount">수량</label>
 				<input type="text" name="pr_amount" id="amount" class="form-control" value="0">
 			</div>
 			<div class="form-group">
@@ -37,12 +38,12 @@ layout:decorate="~{layout/admin_layout.html}">
 				<input type="text" name="pr_price" id="price" class="form-control" value="0">
 			</div>
 			<div class="form-group">
-				<label for="price">썸네일</label>
+				<label for="thumb">썸네일</label>
 				<input type="file" name="thumb" id="thumb" class="form-control">
 			</div>
 			<div class="form-group">
 				<label for="content">제품 상세</label>
-				<textarea type="pr_content" id="thumb" class="form-control"></textarea>
+				<textarea name="pr_content" id="content" class="form-control"></textarea>
 			</div>
 			<button class="btn btn-success col-12">제품 등록</button>
 		</form>
@@ -50,7 +51,7 @@ layout:decorate="~{layout/admin_layout.html}">
       $('#content').summernote({
         placeholder: '제품 상세 설명을 입력하세요.',
         tabsize: 2,
-        height: 100
+        height: 400
       });
     </script>
 	</main>

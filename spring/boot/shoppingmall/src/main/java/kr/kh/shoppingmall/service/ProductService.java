@@ -1,6 +1,5 @@
 package kr.kh.shoppingmall.service;
 
-import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,6 +69,7 @@ public class ProductService {
 	public List<ProductVO> getProductList(int ca_num) {
 		return productDAO.selectProductList(ca_num);
 	}
+
 	public boolean insertProduct(ProductVO product, MultipartFile thumb) {
 		if(product == null || thumb == null || thumb.getOriginalFilename().isEmpty()){
 			return false;
@@ -82,11 +82,11 @@ public class ProductService {
 		}
 		//썸네일 작업
 		String fileName = thumb.getOriginalFilename();
-		String surffix = getSuffix(fileName);
-		String newFileName = product.getPr_code() + surffix;
+		String suffix = getSuffix(fileName);
+		String newFileName = product.getPr_code() + suffix;
 		String thumbnail;
 		try {
-			thumbnail = UploadFileUtils.uploadFile(uploadPath, newFileName, thumb.getBytes(), "product");
+			thumbnail = UploadFileUtils.uploadFile(uploadPath, newFileName, thumb.getBytes(),"product");
 			product.setPr_thumb(thumbnail);
 			productDAO.updateProduct(product);
 		} catch (Exception e) {
@@ -96,7 +96,7 @@ public class ProductService {
 	}
 
 	private String getSuffix(String fileName) {
-
+		
 		int index = fileName.lastIndexOf(".");
 		return index < 0 ? null : fileName.substring(index);
 	}
