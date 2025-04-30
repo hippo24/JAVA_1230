@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import kr.kh.shoppingmall.model.vo.CategoryVO;
 import kr.kh.shoppingmall.model.vo.ProductVO;
-import kr.kh.shoppingmall.service.AdminService;
 import kr.kh.shoppingmall.service.ProductService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
