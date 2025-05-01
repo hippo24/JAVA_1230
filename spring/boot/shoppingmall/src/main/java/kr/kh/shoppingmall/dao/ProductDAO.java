@@ -2,6 +2,8 @@ package kr.kh.shoppingmall.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import kr.kh.shoppingmall.model.vo.BuyListVO;
 import kr.kh.shoppingmall.model.vo.BuyVO;
 import kr.kh.shoppingmall.model.vo.CategoryVO;
@@ -33,6 +35,6 @@ public interface ProductDAO {
 
 	boolean insertBuy(BuyVO buy);
 
-	void insertBuyList(int bu_num, List<BuyListVO> list);
+	void insertBuyList(List<BuyListVO> list);
 	
 }

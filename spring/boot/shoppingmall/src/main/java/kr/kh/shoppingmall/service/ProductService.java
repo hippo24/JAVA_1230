@@ -174,38 +174,33 @@ public class ProductService {
 			return false;
 		}
 		setBu_num(buy.getBu_num(), buy.getList());
-		productDAO.insertBuyList(buy.getBu_num(), buy.getList());
-		// productDAO.updateProductAmount(buy.getList());
+		productDAO.insertBuyList(buy.getList());
+		//productDAO.updateProductAmount(buy.getList());
+		System.out.println(buy);
 		return true;
 	}
 
 	private void setBu_num(int bu_num, List<BuyListVO> list) {
-		if(list == null || list.size() == 9){
+		if(list == null || list.size() == 0){
 			return;
 		}
 		for(BuyListVO bl : list){
 			bl.setBl_bu_num(bu_num);
 		}
 	}
-	
 
 	private int calclateTotalPrice(List<BuyListVO> list) {
 		if(list == null || list.size() == 0){
-			if(list == null || list.size() == 9){
-				return;
-			}
-			for(BuyListVO bl : list){
-				bl.setBl_bu_num(bu_num);
-			}
-		int total
-		 = 0;
+			return 0;
+		}
+		int total = 0;
 		for(BuyListVO bl : list){
 			//제품 정보 가져옴
 			ProductVO product = productDAO.selectProduct(bl.getBl_pr_code());
 			if(product == null){
 				continue;
 			}
-			//제품 구매 가격 = 제품 가격 * 구매 숭량
+			//제품 구매 가격 = 제품 가격 * 구매 수량
 			bl.setBl_price(product.getPr_price() * bl.getBl_amount());
 			//총 가격 = 총가격 + 제품 구매 가격
 			total += bl.getBl_price();

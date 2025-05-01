@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 public class BuyVO {
 	int bu_num;
-	Data bu_date;
+	Date bu_date;
 	String bu_state;
 	int bu_total_price;
 	Date bu_final_Date;
