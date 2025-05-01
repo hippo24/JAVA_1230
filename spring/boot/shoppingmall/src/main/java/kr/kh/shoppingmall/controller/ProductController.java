@@ -60,7 +60,7 @@ public class ProductController {
 	public String buy(Model model, BuyVO buy, @AuthenticationPrincipal CustomUser customUser, HttpServletRequest request) {
 		String prevUrl = request.getHeader("Referer");
 		if(productService.buy(buy, customUser)){
-			return "redirect:/product/buy/complete"+buy.getBu_num();
+			return "redirect:/product/buy/complete/"+buy.getBu_num();
 		}
 		//실패하면 이전 URL로
 		return "redirect:"+prevUrl;

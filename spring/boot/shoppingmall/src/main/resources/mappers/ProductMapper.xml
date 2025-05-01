@@ -68,5 +68,4 @@
 	<update id="updateProductAmount" parameterType="list">
 		update product set pr_amount = pr_amount - #{bl_amount} where pr_code = #{bl_pr_code}
 	</update>
-
 </mapper>
