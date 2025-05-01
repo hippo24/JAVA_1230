@@ -89,7 +89,7 @@ public class AdminController {
 		return "admin/product_update";
 	}
 	@PostMapping("/product/update/{ca_num}")
-	public String productUpdatePost(ProductVO product, MultipartFile thumb, @PathVariable int ca_num) {
+	public String productUpdatePost(ProductVO product, MultipartFile thumb,  @PathVariable int ca_num) {
 		if(productService.updateProduct(product, thumb)){
 			return "redirect:/admin/product/" + ca_num;
 		}
@@ -100,6 +100,5 @@ public class AdminController {
 	public boolean postMethodName(@RequestBody ProductVO product) {
 		return productService.updateAmount(product);
 	}
-	
 	
 }

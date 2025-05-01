@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+
 
 
 
@@ -31,6 +33,7 @@ public class ProductController {
 	}
 	@GetMapping("/detail")
 	public String detail(Model model, String pr_code) {
+		System.out.println(pr_code);
 		ProductVO product = productService.getProduct(pr_code, false);
 		model.addAttribute("product", product);
 		return "product/detail";

@@ -11,16 +11,16 @@ layout:decorate="~{layout/layout.html}">
 	<main layout:fragment="content" class="container">
 		<h1 class="my-3">제품 상세</h1>
 		<div class="product-container">
-			<div class="product-header">
+			<div class="product-header d-flex">
 				<div class="product-thumb col-6 p-0">
 					<img th:src="@{/file/{thumb}(thumb=${product.pr_thumb})}" alt="이미지 없음" width="100%">
 				</div>
 				<div class="product-info col-6">
 					<h1 th:text="${product.pr_title}">제목</h1>
 					<h3 class="product-price" th:text="${#numbers.formatInteger(product.pr_price, 3, 'COMMA')} + '원'"></h3>
-				</div>
+				</div>				
 			</div>
-			<div class="product-body my-3" th:utext="${product.pr_content}">내용</div>
+			<div class="product-body my-3 " th:utext="${product.pr_content}">내용</div>
 		</div>
 	</main>
 </body>

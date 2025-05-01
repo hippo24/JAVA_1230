@@ -128,7 +128,7 @@ public class ProductService {
 			return false;
 		}
 		//썸네일 작업
-		try{
+		try {
 			String fileName = thumb.getOriginalFilename();
 			if(thumb != null && fileName.length() != 0){
 				String suffix = getSuffix(fileName);

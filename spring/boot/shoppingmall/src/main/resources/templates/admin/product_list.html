@@ -62,17 +62,22 @@ layout:decorate="~{layout/admin_layout.html}">
 		</table>
 		<script>
 			$(".btn-add").click(function(){
-					var amount = parseInt(prompt("입고 수량을 입력하세요."));
 
-					if(isNaN(amount)){
-						alert("숫자만 입력하세요.");
-						return;
+				var	amount = parseInt(prompt("입고 수량을 입력하세요."));
+
+				if(isNaN(amount)){
+					alert("숫자만 입력하세요.");
+					return;
 				}
 				var code = $(this).data("code");
 				if(amount < 0){
 					alert("입고 수량은 0이상이어야 합니다.")
 					return;
 				}
+				console.log({
+						pr_code : code,
+						pr_amount : amount
+					})
 				$.ajax({
 					async : true,
 					url : "/admin/product/amount",
