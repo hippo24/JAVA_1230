@@ -98,7 +98,7 @@ public class AdminController {
 	@PostMapping("/product/amount")
 	@ResponseBody
 	public boolean postMethodName(@RequestBody ProductVO product) {
-		return true;
+		return productService.updateAmount(product);
 	}
 	
 	
