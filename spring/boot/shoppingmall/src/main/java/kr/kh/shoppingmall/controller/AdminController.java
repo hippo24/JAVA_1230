@@ -16,6 +16,8 @@ import kr.kh.shoppingmall.model.vo.CategoryVO;
 import kr.kh.shoppingmall.model.vo.ProductVO;
 import kr.kh.shoppingmall.service.ProductService;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 
@@ -70,7 +72,7 @@ public class AdminController {
 	@PostMapping("/product/insert")
 	public String productInsertPost(ProductVO product, MultipartFile thumb) {
 		if(productService.insertProduct(product, thumb)){
-			return "redirect:/admin/product";//+product.getPr_ca_num();
+			return "redirect:/admin/product/"+product.getPr_ca_num();
 		}
 		return "redirect:/admin/product/insert/" +product.getPr_ca_num();
 	}
@@ -93,5 +95,11 @@ public class AdminController {
 		}
 		return "redirect:/admin/product/update/" +product.getPr_code();
 	}
+	@PostMapping("/product/amount")
+	@ResponseBody
+	public boolean postMethodName(@RequestBody ProductVO product) {
+		return true;
+	}
+	
 	
 }
